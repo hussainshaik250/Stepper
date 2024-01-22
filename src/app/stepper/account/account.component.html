@@ -1,0 +1,52 @@
+<form [formGroup]="secondFormGroup" #stepper1>
+
+<h1 class="mx-auto" style="width: 180px;">Account details</h1>
+       
+        <div class="mx-auto" style="width: 320px;">
+          <mat-form-field class="input">
+            <mat-label>Account Number</mat-label>
+            <input matInput placeholder="account number" formControlName="accountnumber" required>
+            <div *ngIf="hasError1('accountnumber', 'required') && (secondFormGroup.get('accountnumber')?.dirty || secondFormGroup.get('accountnumber')?.touched)" class="error-message">Account Number is required</div>
+            <div *ngIf="hasError1('accountnumber', 'pattern') && (secondFormGroup.get('accountnumber')?.dirty || secondFormGroup.get('accountnumber')?.touched)" class="error-message">Invalid account number</div>
+          </mat-form-field>
+          <mat-form-field class="input">
+            <mat-label>IFSC Code</mat-label>
+            <input matInput placeholder="IfSC code" formControlName="ifsccode" required>
+            <div *ngIf="hasError1('ifsccode', 'required') && (secondFormGroup.get('ifsccode')?.dirty || secondFormGroup.get('ifsccode')?.touched)" class="error-message">IFSC Code is required</div>
+            <div *ngIf="hasError1('ifsccode', 'pattern') && (secondFormGroup.get('ifsccode')?.dirty || secondFormGroup.get('ifsccode')?.touched)" class="error-message">Invalid IFSC Code format</div>
+          </mat-form-field>
+          <mat-form-field class="input">
+            <mat-label>Account Holder Name</mat-label>
+            <input matInput placeholder="account holder name" formControlName="holdername" required>
+            <div *ngIf="hasError1('holdername', 'required') && (secondFormGroup.get('holdername')?.dirty || secondFormGroup.get('holdername')?.touched)" class="error-message">Account Holder Name is required</div>
+            <div *ngIf="hasError1('holdername', 'pattern') && (secondFormGroup.get('holdername')?.dirty || secondFormGroup.get('holdername')?.touched)" class="error-message">Only characters and spaces are allowed</div>
+          </mat-form-field>
+          
+          <mat-form-field class="input">
+            <mat-label>Address</mat-label>
+            <input matInput placeholder="Address" formControlName="address" required>
+            <div *ngIf="hasError1('address', 'required') && (secondFormGroup.get('address')?.dirty || secondFormGroup.get('address')?.touched)" class="error-message">Address is required</div>
+  
+          </mat-form-field>
+          <mat-form-field class="input">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY" formControlName="dateofbirth" required>
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            
+            
+            <div *ngIf="secondFormGroup.get('selectedDate')?.hasError('required') && (secondFormGroup.get('selectedDate')?.dirty || secondFormGroup.get('selectedDate')?.touched)" class="error-message">Date is required</div>
+          </mat-form-field>
+         
+          
+        </div>
+      
+  
+  
+        <div style="display: flex; justify-content: flex-end; margin-top: 16px;">
+          <button mat-raised-button matStepperPrevious   color="primary" >Back</button><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <button mat-raised-button  (click)="step2Data()" color="primary">Next</button>
+        </div>
+      
+        </form>

@@ -1,0 +1,61 @@
+
+
+  <ng-template *ngIf="icon=='false'" matStepperIcon="edit">
+    <mat-icon>done</mat-icon>
+  </ng-template>
+  <ng-template *ngIf="icon=='true'" matStepperIcon="done">
+    <mat-icon>done</mat-icon>
+  </ng-template>
+  <form [formGroup]="firstFormGroup" #stepper1>
+ 
+  <h1 class="mx-auto" style="width: 180px;">Personal details</h1>
+        <div class="mx-auto" style="width: 320px;">
+          <mat-form-field class="input">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="First name" formControlName="firstname" required>
+            <div *ngIf="hasError('firstname', 'required')" class="error-message">First Name is required</div>
+            <div *ngIf="hasError('firstname', 'pattern')" class="error-message">Only alphabets and spaces are allowed</div>
+          </mat-form-field> 
+          <mat-form-field class="input">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="last name name" formControlName="lastname" required>
+            <div *ngIf="hasError('lastname', 'required')" class="error-message">Last Name is required</div>
+            <div *ngIf="hasError('lastname', 'pattern')" class="error-message">Only alphabets and spaces are allowed</div>
+          </mat-form-field>
+          <mat-form-field class="input">
+            <mat-label>Mobile Number</mat-label>
+            <input matInput placeholder="mobile number" formControlName="mobilenumber" required>
+            <div *ngIf="hasError('mobilenumber', 'required')" class="error-message">Mobile Number is required</div>
+            <div *ngIf="hasError('mobilenumber', 'pattern')" class="error-message">Invalid mobile number</div>
+          </mat-form-field>
+          
+          <mat-form-field class="input">
+            <mat-label>Email-id</mat-label>
+            <input matInput placeholder="Email id" formControlName="emailid" required>
+            <div *ngIf="hasError('emailid', 'required') && (firstFormGroup.get('emailid')?.dirty || firstFormGroup.get('emailid')?.touched)" class="error-message">Email ID is required</div>
+            <div *ngIf="hasError('emailid', 'invalidEmail') && (firstFormGroup.get('emailid')?.dirty || firstFormGroup.get('emailid')?.touched)" class="error-message">Invalid email format</div>
+          </mat-form-field>
+          <mat-form-field class="input">
+            <mat-label>Language</mat-label>
+            <mat-select formControlName="language" required>
+              <mat-option value="hindi">Hindi</mat-option>
+              <mat-option value="english">English</mat-option>
+              <mat-option value="telugu">Telugu</mat-option>
+            </mat-select>
+            <div *ngIf="hasError('Language', 'required')" class="error-message">Language is required</div>
+          </mat-form-field>
+       
+         
+        </div>
+        <div style="display: flex; justify-content: flex-end; margin-top: 16px;">
+          <div class="btn btn-primary " >
+            
+            
+            <button class="btn ml-100" mat-button (click)="step1Data()" >Next</button>
+          </div>
+          </div>
+          
+          </form>
+        
+          
+       

@@ -1,0 +1,35 @@
+.body1 {
+  padding-top: 20px;
+  margin: 0 auto;
+  max-width: 1248px;
+}
+
+.body1 mat-form-field {
+  width: 100%;
+}
+
+.find {
+  border-radius: 6px;
+}
+
+.users-heading {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-left: 10px;
+  align-items: center;
+  margin: auto;
+  display: flex;
+  justify-content: left;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+.search {
+  width: fit-content;
+}
+
+.table-cell {
+  padding: 5px;
+}
